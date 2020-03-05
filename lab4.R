@@ -18,3 +18,13 @@ par(mar=rep(0.2,4))
 heatmap(data_Matrix)
 # When we run the heatmap() here, we get the dendrograms printed on the both columns and the rows and still there is no real immerging pattern that is interesting to us, 
 #it is because there is no real interesting pattern underlying in the data we generated.
+help("rbinom") 
+set.seed(678910)
+for(i in 1:40){
+  # flipping a coin and getting the data
+  coin_Flip <- rbinom(1, size = 1, prob = 0.5)
+  # if the coin is "Heads", add a common pattern to that row,
+  if(coin_Flip){
+    data_Matrix[i, ] <- data_Matrix[i, ] + rep(c(0,3), each =5)
+  }
+}
